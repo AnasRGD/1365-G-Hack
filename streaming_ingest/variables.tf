@@ -6,7 +6,7 @@ variable "bucket_prefix" {
 variable "dataflow_bucket" {
   type    = string
   description = "Dataflow GCS bucket name"
-  default = "gs://devo-hack-dataflow"
+  default = "devo-hack-dataflow"
 }
 
 variable "dataflow_region" {
