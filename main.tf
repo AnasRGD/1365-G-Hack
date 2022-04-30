@@ -17,3 +17,8 @@ module "file_ingest" {
   bucket_prefix                   = var.bucket_prefix
   terraform_service_account_email = data.google_service_account.terraform.email
 }
+
+module "streaming_ingest" {
+  source = "./streaming_ingest"
+
+}
