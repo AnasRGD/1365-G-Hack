@@ -82,38 +82,38 @@ resource "google_service_account_iam_member" "move_delete_files_sa_user" {
 
 ########################## task_creator ########################
 
-# # Create move-files and delete-files dedicated service accounts
-# resource "google_service_account" "task_creator" {
-#   account_id   = "task-creator"
-#   display_name = "Service Account to run task_creator and task_creator_done cloud function"
-# }
+# Create move-files and delete-files dedicated service accounts
+resource "google_service_account" "task_creator" {
+  account_id   = "task-creator"
+  display_name = "Service Account to run task_creator and task_creator_done cloud function"
+}
 
-# resource "google_project_iam_custom_role" "task_creator_role" {
-#   role_id     = "task_creator_function"
-#   title       = "Task creator function dedicated role"
-#   description = "A customized IAM role for task creator function"
-#   permissions = [
-#     "storage.buckets.get",
-#     "storage.objects.get",
-#     "cloudtasks.tasks.create", 
-#     "iam.serviceAccounts.actAs", 
-#     "cloudfunctions.functions.invoke"
-#     ]
-# }
+resource "google_project_iam_custom_role" "task_creator_role" {
+  role_id     = "task_creator_function"
+  title       = "Task creator function dedicated role"
+  description = "A customized IAM role for task creator function"
+  permissions = [
+    "storage.buckets.get",
+    "storage.objects.get",
+    "cloudtasks.tasks.create", 
+    "iam.serviceAccounts.actAs", 
+    "cloudfunctions.functions.invoke"
+    ]
+}
 
-# # Grant task_creator and task_creator_done service account adequate roles
-# resource "google_project_iam_member" "task_creator_permissions" {
-#   project = data.google_project.current_project.project_id
-#   #role    = google_project_iam_custom_role.task_creator_role.id
-#   role = "roles/storage.admin"
-#   member  = "serviceAccount:${google_service_account.task_creator.email}"
-# }
-
-
+# Grant task_creator and task_creator_done service account adequate roles
+resource "google_project_iam_member" "task_creator_permissions" {
+  project = data.google_project.current_project.project_id
+  #role    = google_project_iam_custom_role.task_creator_role.id
+  role = "roles/storage.admin"
+  member  = "serviceAccount:${google_service_account.task_creator.email}"
+}
 
 
-# resource "google_service_account_iam_member" "task_creator_sa_user" {
-#   service_account_id = google_service_account.task_creator.name
-#   role               = "roles/iam.serviceAccountUser"
-#   member             = "serviceAccount:${var.terraform_service_account_email}"
-# }
+
+
+resource "google_service_account_iam_member" "task_creator_sa_user" {
+  service_account_id = google_service_account.task_creator.name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${var.terraform_service_account_email}"
+}
