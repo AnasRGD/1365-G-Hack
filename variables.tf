@@ -29,36 +29,21 @@ variable "bucket_prefix" {
 # }
 
 
-variable "monitoring_file_function_version" {
-  description = "The version of monitoring files function to deploy"
-  type = string
-}
+# variable "monitoring_file_function_version" {
+#   description = "The version of monitoring files function to deploy"
+#   type = string
+# }
 
-variable "max_ingest_time" {
-  description = "The maximum of time supposed (in minutes) for monitoring"
-  type = number
-}
+# variable "max_ingest_time" {
+#   description = "The maximum of time supposed (in minutes) for monitoring"
+#   type = number
+# }
 
 
-variable "queue_location" {
-  description = "The GCP region of Cloud Task queues"
-  type = string
-}
-
-variable "work_bucket_composer_name" {
-  type = string
-  description = "The name of Airflow work bucket"
-}
-
-variable "backup_bucket_composer_name" {
-  type = string
-  description = "The name of Airflow backup bucket"
-}
-
-variable "tf_workspace_id" {
-  description = "Terraform workspace ID"
-  type = string
-}
+# variable "queue_location" {
+#   description = "The GCP region of Cloud Task queues"
+#   type = string
+# }
 
 
 variable "gcp_credentials" {

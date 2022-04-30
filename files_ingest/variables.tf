@@ -3,16 +3,16 @@ variable "bucket_prefix" {
   description = "The prefix of integration bucket names"
 }
 
-variable "gcs_to_bq_version" {
-  type = string
-  description = "The gcs2bq function version to use"
+# variable "gcs_to_bq_version" {
+#   type = string
+#   description = "The gcs2bq function version to use"
 
-  validation {
-    # regex(...) fails if it cannot find a match
-    condition     = can(regex("^v\\d+\\.\\d+\\.\\d+$", var.gcs_to_bq_version))
-    error_message = "The gcs_to_bq_version value must be a valid version tag (e.g: v1.0.0)."
-  }
-}
+#   validation {
+#     # regex(...) fails if it cannot find a match
+#     condition     = can(regex("^v\\d+\\.\\d+\\.\\d+$", var.gcs_to_bq_version))
+#     error_message = "The gcs_to_bq_version value must be a valid version tag (e.g: v1.0.0)."
+#   }
+# }
 
 # variable "move_files_version" {
 #   type = string
