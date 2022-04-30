@@ -1,1 +1,1 @@
-# 1365-G-Hack
+# devoteam_hackaton
