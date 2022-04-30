@@ -10,6 +10,10 @@ resource "google_pubsub_topic" "integration-bucket" {
   name = "integration-bucket"   
 }
 
+resource "google_pubsub_topic" "gcs_to_bq_integration_done" {
+  name = "gcs_to_bq_integration_done"
+}
+
 // Enable notifications by giving the correct IAM permission to the unique service account.
 data "google_storage_project_service_account" "gcs_account" {
 }
