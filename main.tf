@@ -20,5 +20,5 @@ module "file_ingest" {
 
 module "streaming_ingest" {
   source = "./streaming_ingest"
-
+  bucket_prefix                   = var.bucket_prefix
 }
