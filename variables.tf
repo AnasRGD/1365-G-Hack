@@ -3,10 +3,10 @@ variable "project_id" {
   type = string
 }
 
-variable "bucket_function_registry" {
-  description = "The bucket where the function are stored"
-  type = string
-}
+# variable "bucket_function_registry" {
+#   description = "The bucket where the function are stored"
+#   type = string
+# }
 
 variable "bucket_prefix" {
   description = "The prefix given to the ingest buckets"

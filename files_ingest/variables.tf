@@ -14,27 +14,27 @@ variable "gcs_to_bq_version" {
   }
 }
 
-variable "move_files_version" {
-  type = string
-  description = "The move files function version to use"
+# variable "move_files_version" {
+#   type = string
+#   description = "The move files function version to use"
 
-  validation {
-    # regex(...) fails if it cannot find a match
-    condition     = can(regex("^v\\d+\\.\\d+\\.\\d+$", var.move_files_version))
-    error_message = "The move_files_version value must be a valid version tag (e.g: v1.0.0)."
-  }
-}
+#   validation {
+#     # regex(...) fails if it cannot find a match
+#     condition     = can(regex("^v\\d+\\.\\d+\\.\\d+$", var.move_files_version))
+#     error_message = "The move_files_version value must be a valid version tag (e.g: v1.0.0)."
+#   }
+# }
 
-variable "task_creator_version" {
-  type = string
-  description = "The task creator function version to use"
+# variable "task_creator_version" {
+#   type = string
+#   description = "The task creator function version to use"
 
-  validation {
-    # regex(...) fails if it cannot find a match
-    condition     = can(regex("^v\\d+\\.\\d+\\.\\d+$", var.task_creator_version))
-    error_message = "The task_creator_version value must be a valid version tag (e.g: v1.0.0)."
-  }
-}
+#   validation {
+#     # regex(...) fails if it cannot find a match
+#     condition     = can(regex("^v\\d+\\.\\d+\\.\\d+$", var.task_creator_version))
+#     error_message = "The task_creator_version value must be a valid version tag (e.g: v1.0.0)."
+#   }
+# }
 
 variable "function_region" {
   type = string
@@ -49,11 +49,11 @@ variable "queue_location" {
 }
 
 
-variable "bucket_function_registry" {
-  type = string
-  description = "The bucket where to find functions zip files"
-  default = "devo-hack-functions-registry"
-}
+# variable "bucket_function_registry" {
+#   type = string
+#   description = "The bucket where to find functions zip files"
+#   default = "devo-hack-functions-registry"
+# }
 
 variable "terraform_service_account_email" {
   type = string

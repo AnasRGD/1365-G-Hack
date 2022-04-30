@@ -15,7 +15,5 @@ module "file_ingest" {
   source = "./files_ingest"
 
   bucket_prefix                   = var.bucket_prefix
-  gcs_to_bq_version               = var.gcs_to_bq_version
   terraform_service_account_email = data.google_service_account.terraform.email
-  queue_location                  = var.queue_location
 }
