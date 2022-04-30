@@ -29,9 +29,9 @@ variable "dataflow_jobs" {
       table = "TABLE1"
     },
     {
-      topic = "DISTRIBUTIONORDER"
-      dataset = "DISTRIBUTIONORDER"
-      table = "DISTRIBUTIONORDER"
+      topic = "TOPIC2"
+      dataset = "DATASET2"
+      table = "TABLE2"
     }
   ]
 }
