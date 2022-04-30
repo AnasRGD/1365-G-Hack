@@ -1,0 +1,41 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Automatic versionning
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - VERSION
+      - CHANGELOG.md
+      - package.json
+      - package-lock.json
+
+jobs:
+  versioning:
+
+    runs-on: [self-hosted, Linux, standard]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ssh-key: ${{ secrets.GH_SSH_KEY }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Set up npm dependencies
+        run: |
+          npm install
+      - name: Bump release
+        run: |
+          git config user.email "anasraggad@gmail.com"
+          git config user.name "Devo Hack service account"
+          npm run release
+          git describe --tags --abbrev=0 | cut -c 2- > VERSION
+          git add VERSION CHANGELOG.md package.json package-lock.json
+          git commit -m "chore(release): $(cat VERSION)"
+      - name: Push release
+        run: |
+          git push --follow-tags origin master
