@@ -13,7 +13,6 @@ data "google_project" "current_project" {
 
 module "file_ingest" {
   source = "./files_ingest"
-
   bucket_prefix                   = var.bucket_prefix
   terraform_service_account_email = data.google_service_account.terraform.email
 }
