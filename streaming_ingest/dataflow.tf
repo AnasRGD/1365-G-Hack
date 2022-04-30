@@ -28,7 +28,7 @@ resource "google_dataflow_job" "dataflow_job" {
   on_delete             = "cancel"
   max_workers           = "3"
   template_gcs_path     = "gs://dataflow-templates/latest/PubSub_Subscription_to_BigQuery"
-  temp_gcs_location     = "gs://${var.dataflow_bucket}/${each.value.topic}"
+  temp_gcs_location     = "${var.dataflow_bucket}/${each.value.topic}"
   service_account_email = google_service_account.dataflow_sa.email
   parameters = {
     inputSubscription       = "projects/${data.google_project.current_project.project_id}/subscriptions/SUBSCRIBER-FOR-${each.value.topic}-TOBQ"
